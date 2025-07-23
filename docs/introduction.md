@@ -19,4 +19,4 @@ To get started, create a new application in your [developer settings](/dev-setin
 access using our HTTP APIs or dedicated client SDKs. When your integration is ready to go live, publish it to our [integrations directory](/integration-dir) to
 reach the Protocol community.
 
-[Get your API Key](/get-your-api-key)
+[Get your API Key](/get-api)
