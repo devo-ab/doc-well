@@ -1,13 +1,14 @@
 "use client";
-import  useDebounce  from "@/hooks/useDebounce";
+import useDebounce from "@/hooks/useDebounce";
 import Image from "next/image";
 import { useState } from "react";
 import SearchResult from "./SearchResult";
-
+import { useRouter } from "next/navigation";
 
 export default function Search({ docs }) {
   const [searchResult, setSearchResult] = useState([]);
   const [term, setTerm] = useState("");
+  const router = useRouter();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -22,6 +23,12 @@ export default function Search({ docs }) {
 
     setSearchResult(found);
   }, 500);
+
+  const closeSearchResults = (e) => {
+    e.preventDefault();
+    router.push(e.target.href);
+    setTerm("");
+  };
 
   return (
     <div class="relative hidden lg:block lg:max-w-md lg:flex-auto">
@@ -43,7 +50,13 @@ export default function Search({ docs }) {
         </kbd>
       </button>
 
-      {term && term.trim().length > 0 && (<SearchResult results={searchResult} term={term}></SearchResult>)}
+      {term && term.trim().length > 0 && (
+        <SearchResult
+          results={searchResult}
+          term={term}
+          closeSearchResults={closeSearchResults}
+        ></SearchResult>
+      )}
     </div>
   );
 }

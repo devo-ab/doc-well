@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export default function SearchResult({ results, term }) {
+export default function SearchResult({ results, term, closeSearchResults }) {
   return (
     <div class="absolute left-0 top-12 z-[999] w-full rounded-md bg-white p-4 shadow">
       <p class="!text-lg">
@@ -10,7 +10,7 @@ export default function SearchResult({ results, term }) {
       <ul role="list" class="divide-y divide-gray-100 [&>*]:py-2">
         {results.map((result) => (
           <li key={result.id} class="">
-            <Link href={`/docs/${result.id}`} class="transition-all hover:text-emerald-600">
+            <Link href={`/docs/${result.id}`} class="transition-all hover:text-emerald-600" onClick={(e) => closeSearchResults(e)}>
               {result.title}
             </Link>
           </li>
