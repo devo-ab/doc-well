@@ -51,7 +51,7 @@ export default function Sidebar({ docs }) {
 
     setRootNodes([...roots]);
     setNonRootNodesGrouped({ ...nonRoots });
-  }, [pathName]);
+  }, [docs, pathName]);
 
   return (
     <nav className="lg:block my-10">
